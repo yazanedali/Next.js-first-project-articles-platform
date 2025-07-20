@@ -7,15 +7,14 @@ interface PostPageProps {
   };
 }
 
-export default function PostPage({ params }: PostPageProps) {
-
+export default async function PostPage({ params }: PostPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header Section */}
         <header className="text-center mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">
-            📄 Post Details
+            📄 تفاصيل المقال
           </h1>
           <div className="w-70 h-1 bg-blue-500 mx-auto rounded-full"></div>
         </header>
@@ -25,7 +24,7 @@ export default function PostPage({ params }: PostPageProps) {
           <div className="p-6 sm:p-8">
             <PostDetails id={params.id} />
           </div>
-
+          
           {/* Back Button */}
           <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
             <Link
@@ -44,7 +43,7 @@ export default function PostPage({ params }: PostPageProps) {
                   clipRule="evenodd"
                 />
               </svg>
-              Back to Main List
+              العودة إلى القائمة الرئيسية
             </Link>
           </div>
         </div>
