@@ -21,16 +21,16 @@ export default function HomePage() {
   const [posts, setPosts] = useState<Post[]>([])
   const [totalPosts, setTotalPosts] = useState(0)
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-      const allPosts: Post[] = await res.json()
-      setTotalPosts(allPosts.length)
-      setPosts(allPosts.slice(start, end))
-    }
+ useEffect(() => {
+  const fetchPosts = async () => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
+    const allPosts: Post[] = await res.json()
+    setTotalPosts(allPosts.length)
+    setPosts(allPosts.slice(start, end))
+  }
 
-    fetchPosts()
-  }, [page])
+  fetchPosts()
+}, [page, start, end]) // أضف start و end كمتابعات
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-8">

@@ -30,7 +30,7 @@ export default function LinkWithSpinner({ href, children, className }: LinkWithS
     >
       {children}
       {isNavigating && (
-        <span style={{ marginLeft: 10, fontSize: 12 }}>⏳ جاري التحميل...</span>
+        <span style={{ marginLeft: 10, fontSize: 12 }}>⏳ Loading...</span>
       )}
     </Link>
   );
