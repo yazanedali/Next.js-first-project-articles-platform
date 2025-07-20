@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default async function AboutPage() {
   await new Promise(resolve => setTimeout(resolve, 1000))
 
@@ -91,12 +93,12 @@ export default async function AboutPage() {
               <h3 className="text-xl font-medium text-gray-800 mb-4">
                 Have a question or suggestion?
               </h3>
-              <a
+              <Link
                 href="mailto:yazanhendi999@gmail.com"
                 className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md"
               >
                 Contact Us
-              </a>
+              </Link>
             </section>
           </div>
         </div>

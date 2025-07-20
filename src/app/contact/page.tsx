@@ -13,7 +13,7 @@ export default async function ContactPage() {
             <div className="w-45 h-1 bg-blue-500 mx-auto rounded-full mt-6"></div>
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We're here to help! Send us your inquiry or suggestion and we’ll get back to you as soon as possible.
+            We&apos;re here to help! Send us your inquiry or suggestion and we&apos;ll get back to you as soon as possible.
           </p>
         </header>
 

@@ -60,12 +60,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <p className="text-sm">&copy; {new Date().getFullYear()} My Awesome App. All rights reserved.</p>
               </div>
               <div className="flex space-x-4">
-                <a href="#privacy" className="text-gray-300 hover:text-white text-sm">
+                <Link href="#privacy" className="text-gray-300 hover:text-white text-sm">
                   Privacy Policy
-                </a>
-                <a href="#terms" className="text-gray-300 hover:text-white text-sm">
+                </Link>
+                <Link href="#terms" className="text-gray-300 hover:text-white text-sm">
                   Terms of Service
-                </a>
+                </Link>
               </div>
             </div>
           </div>
