@@ -1,16 +1,28 @@
-'use client'
+import Link from "next/link";
+import PostDetails from "./PostDetails";
+import { notFound } from "next/navigation";
 
-import Link from "next/link"
-import PostDetails from "./PostDetails"
+type Post = {
+  id: number;
+  title: string;
+  body: string;
+};
 
-export default function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  if (!res.ok) {
+    notFound();
+  }
+  const post: Post = await res.json();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header Section */}
         <header className="text-center mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">
-            📄 تفاصيل المقال
+            📄 Post Details
           </h1>
           <div className="w-70 h-1 bg-blue-500 mx-auto rounded-full"></div>
         </header>
@@ -18,9 +30,8 @@ export default function Page({ params }: { params: { id: string } }) {
         {/* Post Content Area */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="p-6 sm:p-8">
-            <PostDetails id={params.id} />
+            <PostDetails post={post} />
           </div>
-          
           {/* Back Button */}
           <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
             <Link
@@ -39,11 +50,11 @@ export default function Page({ params }: { params: { id: string } }) {
                   clipRule="evenodd"
                 />
               </svg>
-              العودة إلى القائمة الرئيسية
+              Back to Home
             </Link>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
