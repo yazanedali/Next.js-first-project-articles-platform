@@ -1,24 +1,36 @@
-import LinkWithSpinner from "./ui/LinkWithSpinner"
-import Pagination from "../components/Pagination"
+'use client'
+
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import LinkWithSpinner from './ui/LinkWithSpinner'
+import Pagination from '../components/Pagination'
 
 interface Post {
   id: number
   title: string
 }
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined }
-}) {
-  const page = searchParams.page ? Number(searchParams.page) : 1
+export default function HomePage() {
+  const searchParams = useSearchParams()
+  const page = Number(searchParams.get('page')) || 1
+
   const postsPerPage = 9
   const start = (page - 1) * postsPerPage
   const end = start + postsPerPage
 
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-  const allPosts: Post[] = await res.json()
-  const posts = allPosts.slice(start, end)
+  const [posts, setPosts] = useState<Post[]>([])
+  const [totalPosts, setTotalPosts] = useState(0)
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
+      const allPosts: Post[] = await res.json()
+      setTotalPosts(allPosts.length)
+      setPosts(allPosts.slice(start, end))
+    }
+
+    fetchPosts()
+  }, [page])
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-8">
@@ -62,7 +74,7 @@ export default async function HomePage({
 
         {/* Pagination */}
         <Pagination 
-          totalPosts={allPosts.length} 
+          totalPosts={totalPosts} 
           postsPerPage={postsPerPage} 
         />
       </div>
