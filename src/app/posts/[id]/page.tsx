@@ -1,13 +1,15 @@
-import Link from "next/link";
-import PostDetails from "./PostDetails";
+'use client'
 
-interface PostPageProps {
+import Link from "next/link"
+import PostDetails from "./PostDetails"
+
+type PostPageProps = {
   params: {
-    id: string;
-  };
+    id: string
+  }
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default function PostPage({ params }: PostPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
@@ -49,5 +51,5 @@ export default async function PostPage({ params }: PostPageProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }
