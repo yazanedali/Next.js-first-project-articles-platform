@@ -18,7 +18,7 @@ export default function NotFound() {
 
         {/* Description message */}
         <p className="text-lg text-gray-600 mb-8">
-          Sorry, it seems the article you're looking for has been removed or is currently unavailable.
+          Sorry, it seems the article you&#39;re looking for has been removed or is currently unavailable.
         </p>
 
         {/* Return button */}
